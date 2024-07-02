@@ -57,3 +57,5 @@ git stash clear   -----------------------------   Clears everything stored in th
 git clone <url>   -----------------------------   Clones repository to cd
 git remote -v   -------------------------------   View any existing remotes for my repository
 git remote add <name> <url>   -----------------   Creates a new remote by taking in a name and url (name is usually "Origin")
+git remote rename <old> <new>   ---------------   Renames the remote name
+git remote remove <name>   --------------------   Removes remote name
