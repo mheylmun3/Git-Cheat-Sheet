@@ -76,4 +76,5 @@ git push <remote> <local branch>:<remote branch>   ---   Pushes a local branch u
 git push -u origin master   --------------------------   Using -u sets the upstream of the local master branch so the master branch is tracked on the origin repository
 git fetch   ------------------------------------------   Get the latest changes from origin (not merged)
 git pull   -------------------------------------------   Fetch the latest changes from origin and merge
+git pull origin master   -----------------------------   Combines fetching and merging into one command
 git pull --rebase   ----------------------------------   Getch the latest changes from origin and rebase
