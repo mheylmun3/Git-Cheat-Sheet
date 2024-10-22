@@ -1,5 +1,6 @@
 Git / Github Cheat Sheet
 
+Managing Files and Directories
 git init   -------------------------------------------   Initializes git to that directory. git status should be run before running git init to ensure the cd is not already initialized
 git status   -----------------------------------------   Gives current status of git
 touch <file name>   ----------------------------------   Creates new file. Needs file type at the end
@@ -10,12 +11,15 @@ ls   -------------------------------------------------   Lists the files in the 
 rm <file name>   -------------------------------------   Removes a file
 rm -rf <directory name>   ----------------------------   Removes a directory or folder. -r is recursive and -f is force
 
-git add <files>   ------------------------------------   Adds the files to be committed
+Managing Commits
+git add <files>   ------------------------------------   Adds the specified files to be committed
+git add .   ------------------------------------------   Adds all files to be committed
 git commit -m "<info>"   -----------------------------   Commits the files added with information of the commit in present tense
 git commit -a -m "<info>"   --------------------------   Adds all files to be committed and commits them with information on what is being committed
 git log   --------------------------------------------   Gives information on where the head is pointing to and previous commits to that branch
 git log --oneline   ----------------------------------   Prints a simplified version of the log where each commit is only one line
 
+Working with Branches
 git branch   -----------------------------------------   Lists the branches in that branch
 git switch <branch name>   ---------------------------   Switches between branches
 git switch -c <branch name>   ------------------------   Creates a new branch and switches to it
@@ -24,6 +28,14 @@ git checkout -b <branch name>   ----------------------   Same functionality as g
 git checkout <commit hash>   -------------------------   Change the HEAD to a different version to review or make new branch (commit hash is 7 digit commit id from log)
 git checkout HEAD~<#>   ------------------------------   Reference previous commits from HEAD (1 is parent, 2 is grandparent, and so on)
 
+Managing Branches
+git branch <branch name>   ---------------------------   Creates new branch
+git branch -d <branch name>   ------------------------   Deletes a branch only if that branch is not selected and is fully merged
+git branch -D <branch name>   ------------------------   Force deletes the branch
+git branch -m <new branch name>   --------------------   Renames the current branch
+git merge <branch name>   ----------------------------   Merges called branch to the current branch. Typically want to merge all branches back to master branch
+
+Version Control
 git checkout HEAD <file name>   ----------------------   Reverts files back to HEAD
 git checkout -- <file name>   ------------------------   Reverts files back to HEAD
 git restore <file name>   ----------------------------   Reverts files back to HEAD (new and preferred method) * Changes to current file are lost *
@@ -33,12 +45,7 @@ git reset <commit hash>   ----------------------------   Resets the repository b
 git reset --hard <commit hash>   ---------------------   Resets the repository back to a specific commit, but removes the changes in the working directory
 git revert <commit hash>   ---------------------------   Creates a brand new commit to save it to which reverses the changes from a commit. A new commit message will be needed
 
-git branch <branch name>   ---------------------------   Creates new branch
-git branch -d <branch name>   ------------------------   Deletes a branch only if that branch is not selected and is fully merged
-git branch -D <branch name>   ------------------------   Force deletes the branch
-git branch -m <new branch name>   --------------------   Renames the current branch
-git merge <branch name>   ----------------------------   Merges called branch to the current branch. Typically want to merge all branches back to master branch
-
+Changes Between Branches
 git diff   -------------------------------------------   Shows all changes to files between last commit and in working directory
 git diff HEAD   --------------------------------------   View all changes since head
 git diff --staged   ----------------------------------   Lists the changes between the staing area and last commit that would be included in the next commit
@@ -46,6 +53,7 @@ git diff --cached   ----------------------------------   Does the same thing as 
 git diff <branch1>..<branch2>   ----------------------   Compares the differences between two branches (preferred method)
 git diff <branch1> <branch2>   -----------------------   Compares the differences between two branches
 
+Working with Stash
 git stash   ------------------------------------------   Saves unsaved changes without committing them (can save multiple stashes)
 git stash pop   --------------------------------------   Restores stashed changes to current branch
 git stash apply   ------------------------------------   Changes are still stored in stash and can be applied to multiple branches (not used often)
@@ -54,12 +62,18 @@ git stash apply stash@{<stash #>}   ------------------   Applies stash index fro
 git stash drop stash@{<stash #>}   -------------------   Drops a single stash stored in the stash
 git stash clear   ------------------------------------   Clears everything stored in the stash
 
+Clones and Remote
 git clone <url>   ------------------------------------   Clones repository to cd
 git remote -v   --------------------------------------   View any existing remotes for my repository
 git remote add <name> <url>   ------------------------   Creates a new remote by taking in a name and url (name is usually "Origin")
 git remote rename <old> <new>   ----------------------   Renames the remote name
 git remote remove <name>   ---------------------------   Removes remote name
+
+Push/Pull Requests
 git push <remote> <branch>   -------------------------   Pushes branch to Github
 git push origin master   -----------------------------   Tells git to push up the master branch to our origin remote
 git push <remote> <local branch>:<remote branch>   ---   Pushes a local branch up to a remote branch of a different name
 git push -u origin master   --------------------------   Using -u sets the upstream of the local master branch so the master branch is tracked on the origin repository
+git fetch   ------------------------------------------   Get the latest changes from origin (not merged)
+git pull   -------------------------------------------   Fetch the latest changes from origin and merge
+git pull --rebase   ----------------------------------   Getch the latest changes from origin and rebase
