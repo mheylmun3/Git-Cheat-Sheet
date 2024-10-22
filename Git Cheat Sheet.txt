@@ -18,6 +18,7 @@ git commit -m "<info>"   -----------------------------   Commits the files added
 git commit -a -m "<info>"   --------------------------   Adds all files to be committed and commits them with information on what is being committed
 git log   --------------------------------------------   Gives information on where the head is pointing to and previous commits to that branch
 git log --oneline   ----------------------------------   Prints a simplified version of the log where each commit is only one line
+git commit --amend -m "<new message>"   --------------   Changes the most recent commit message
 
 Working with Branches
 git branch   -----------------------------------------   Lists the branches in that branch
